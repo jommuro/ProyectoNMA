@@ -1,0 +1,2623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoModelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACT_TRAB">
+          <Key>
+            <PropertyRef Name="ID_ACT_TRAB" />
+          </Key>
+          <Property Name="ID_ACT_TRAB" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ASISTENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_ACTIVIDAD" Type="date" Nullable="false" />
+          <Property Name="HORA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINUTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_ACT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_CHECK" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ASISTENTE">
+          <Key>
+            <PropertyRef Name="ID_ASISTENTE" />
+          </Key>
+          <Property Name="ID_ASISTENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_TRABAJADOR" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="AP_PAT" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="AP_MAT" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="NUM_ACCIDENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACC_POST_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CAPACITACION" Type="date" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_GENERO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHECKLIST">
+          <Key>
+            <PropertyRef Name="ID_CHECK" />
+          </Key>
+          <Property Name="ID_CHECK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RIESGO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="OBSERVACION" Type="varchar2" MaxLength="255" />
+          <Property Name="ID_EST_CHECK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE_EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_EMPRESA" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAIL_EMPRESA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_CLIENT" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ACCIDENTES.CLIENTE_RUBRO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CLIENTE_RUBRO">
+          <Key>
+            <PropertyRef Name="COD_RUBRO" />
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="COD_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO">
+          <Key>
+            <PropertyRef Name="COD_CONTRATO" />
+          </Key>
+          <Property Name="COD_CONTRATO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FECH_INICIO" Type="date" Nullable="false" />
+          <Property Name="MONTO_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_VENCIMIENTO" Type="date" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO_PLAN">
+          <Key>
+            <PropertyRef Name="ID_DET_PLAN" />
+          </Key>
+          <Property Name="ID_DET_PLAN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CONTRATO" Type="date" Nullable="false" />
+          <Property Name="ID_PLAN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO_SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_DET_SERV" />
+          </Key>
+          <Property Name="ID_DET_SERV" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CONTRATO" Type="date" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CREDENCIAL">
+          <Key>
+            <PropertyRef Name="ID_CREDENCIAL" />
+          </Key>
+          <Property Name="ID_CREDENCIAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_CRED" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_CREDEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="DETALLE_FACTURA">
+          <Key>
+            <PropertyRef Name="ID_DET_FACTURA" />
+          </Key>
+          <Property Name="ID_DET_FACTURA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_SERVICIO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COSTO_ASOCIADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_FACTURA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_EST_ACT" />
+          </Key>
+          <Property Name="ID_EST_ACT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_CHECK">
+          <Key>
+            <PropertyRef Name="ID_EST_CHECK" />
+          </Key>
+          <Property Name="ID_EST_CHECK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_EST_CLIENT" />
+          </Key>
+          <Property Name="ID_EST_CLIENT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_CREDENCIAL">
+          <Key>
+            <PropertyRef Name="ID_EST_CREDEN" />
+          </Key>
+          <Property Name="ID_EST_CREDEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ESTADO_FACTURA">
+          <Key>
+            <PropertyRef Name="ID_EST_FACT" />
+          </Key>
+          <Property Name="ID_EST_FACT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="NUM_FACTURA" />
+          </Key>
+          <Property Name="NUM_FACTURA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_BASE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_EMISION" Type="date" Nullable="false" />
+          <Property Name="FECH_VENC" Type="date" Nullable="false" />
+          <Property Name="MONTO_EXTRA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_MORA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_FACT" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GENERO">
+          <Key>
+            <PropertyRef Name="ID_GENERO" />
+          </Key>
+          <Property Name="ID_GENERO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_INTERACCION" />
+          </Key>
+          <Property Name="ID_INTERACCION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_INTERACCION" Type="date" Nullable="false" />
+          <Property Name="HORA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINUTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="OBSERVACION" Type="varchar2" MaxLength="255" />
+          <Property Name="ID_TIP_INTER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOGIN_FAIL">
+          <Key>
+            <PropertyRef Name="ID_FAIL" />
+          </Key>
+          <Property Name="ID_FAIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_FAIL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASS_FAIL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_INTENTO" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ACCIDENTES.MAT_ACTIV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MAT_ACTIV">
+          <Key>
+            <PropertyRef Name="COD_MATERIAL" />
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="COD_MATERIAL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATERIAL">
+          <Key>
+            <PropertyRef Name="COD_MATERIAL" />
+          </Key>
+          <Property Name="COD_MATERIAL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="150" Nullable="false" />
+          <Property Name="CANT_DISPONIBLE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PAIS">
+          <Key>
+            <PropertyRef Name="ID_PAIS" />
+          </Key>
+          <Property Name="ID_PAIS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLAN">
+          <Key>
+            <PropertyRef Name="ID_PLAN" />
+          </Key>
+          <Property Name="ID_PLAN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_PLAN" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_INI_VIGENCIA" Type="date" Nullable="false" />
+          <Property Name="FEC_FIN_VIGENCIA" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ACCIDENTES.PLAN_SERVICIO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PLAN_SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_PLAN" />
+            <PropertyRef Name="ID_SERVICIO" />
+            <PropertyRef Name="CANTIDAD" />
+          </Key>
+          <Property Name="ID_PLAN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_PROFESIONAL" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="AP_PAT" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="AP_MAT" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FEC_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ID_GENERO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ID_PAIS" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ERROR">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PROCEDIMIENTO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="COD_ERROR_DB" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REP_CLI_EMP">
+          <Key>
+            <PropertyRef Name="ID_REP_CLIEMP" />
+          </Key>
+          <Property Name="ID_REP_CLIEMP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_VISITAS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ASESORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_LLAMADA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANT_NVA_IMPLEMEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_ACC_PRE_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_ACC_POST_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_MULTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_DEMANDA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_DIA_PERDIDO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_COTIZACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REP_PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_REP_PRO" />
+          </Key>
+          <Property Name="ID_REP_PRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANT_CAP_PRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACC_POST_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_ATRASADA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_CANCEL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_TERMIN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="COD_RUBRO" />
+          </Key>
+          <Property Name="COD_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_SERVICIO" />
+          </Key>
+          <Property Name="ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="REGLA" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TIPO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_TIP_INTER" />
+          </Key>
+          <Property Name="ID_TIP_INTER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="ACT_TRAB_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACT_TRAB" Type="Self.ACT_TRAB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="ACT_TRAB">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACT_TRAB_ASISTENTE_FK">
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="1" />
+          <End Role="ACT_TRAB" Type="Self.ACT_TRAB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASISTENTE">
+              <PropertyRef Name="ID_ASISTENTE" />
+            </Principal>
+            <Dependent Role="ACT_TRAB">
+              <PropertyRef Name="ID_ASISTENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_CHECKLIST_FK">
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHECKLIST">
+              <PropertyRef Name="ID_CHECK" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CHECK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_ESTADO_ACTIVIDAD_FK">
+          <End Role="ESTADO_ACTIVIDAD" Type="Self.ESTADO_ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_ACTIVIDAD">
+              <PropertyRef Name="ID_EST_ACT" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_EST_ACT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_GENERO_FK">
+          <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENERO">
+              <PropertyRef Name="ID_GENERO" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_GENERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_CLIE_EMPR_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CHECKLIST">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_EST_CHECK_FK">
+          <End Role="ESTADO_CHECK" Type="Self.ESTADO_CHECK" Multiplicity="1" />
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CHECK">
+              <PropertyRef Name="ID_EST_CHECK" />
+            </Principal>
+            <Dependent Role="CHECKLIST">
+              <PropertyRef Name="ID_EST_CHECK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLI_EMP_EST_CLI_FK">
+          <End Role="ESTADO_CLIENTE" Type="Self.ESTADO_CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CLIENTE">
+              <PropertyRef Name="ID_EST_CLIENT" />
+            </Principal>
+            <Dependent Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_EST_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLI_RUBRO_CLI_EMP_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="CLIENTE_RUBRO" Type="Self.CLIENTE_RUBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CLIENTE_RUBRO">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_EMPRESA_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_RUBRO_RUBRO_FK">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="CLIENTE_RUBRO" Type="Self.CLIENTE_RUBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="COD_RUBRO" />
+            </Principal>
+            <Dependent Role="CLIENTE_RUBRO">
+              <PropertyRef Name="COD_RUBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMUNA_REGION_FK">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO_PLAN" Type="Self.CONTRATO_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATO_PLAN">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_PLAN_FK">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="1" />
+          <End Role="CONTRATO_PLAN" Type="Self.CONTRATO_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Principal>
+            <Dependent Role="CONTRATO_PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO_SERVICIO" Type="Self.CONTRATO_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATO_SERVICIO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="CONTRATO_SERVICIO" Type="Self.CONTRATO_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="CONTRATO_SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CRED_CLI_EMP_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="0..1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CRED_EST_CRED_FK">
+          <End Role="ESTADO_CREDENCIAL" Type="Self.ESTADO_CREDENCIAL" Multiplicity="1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CREDENCIAL">
+              <PropertyRef Name="ID_EST_CREDEN" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_EST_CREDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CREDENCIAL_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="0..1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CREDENCIAL_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DET_FACT_ACTIV_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DET_FACT_FACT_FK">
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="NUM_FACTURA" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="NUM_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_ESTADO_FACTURA_FK">
+          <End Role="ESTADO_FACTURA" Type="Self.ESTADO_FACTURA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_FACTURA">
+              <PropertyRef Name="ID_EST_FACT" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_EST_FACT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTER_ACT_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTER_TIP_INTER_FK">
+          <End Role="TIPO_INTERACCION" Type="Self.TIPO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_INTERACCION">
+              <PropertyRef Name="ID_TIP_INTER" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_TIP_INTER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MAT_ACTIV_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="MAT_ACTIV" Type="Self.MAT_ACTIV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="MAT_ACTIV">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MAT_ACTIV_MATERIAL_FK">
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="1" />
+          <End Role="MAT_ACTIV" Type="Self.MAT_ACTIV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIAL">
+              <PropertyRef Name="COD_MATERIAL" />
+            </Principal>
+            <Dependent Role="MAT_ACTIV">
+              <PropertyRef Name="COD_MATERIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAN_SERVICIO_PLAN_FK">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="1" />
+          <End Role="PLAN_SERVICIO" Type="Self.PLAN_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Principal>
+            <Dependent Role="PLAN_SERVICIO">
+              <PropertyRef Name="ID_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAN_SERVICIO_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="PLAN_SERVICIO" Type="Self.PLAN_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="PLAN_SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_GENERO_FK">
+          <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENERO">
+              <PropertyRef Name="ID_GENERO" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_GENERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGION_PAIS_FK">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+          <End Role="REGION" Type="Self.REGION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="REGION">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REP_CLI_EMP_CLI_EMP_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="REP_CLI_EMP" Type="Self.REP_CLI_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="REP_CLI_EMP">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REP_PRO_PRO_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="REP_PROFESIONAL" Type="Self.REP_PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="REP_PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FN_MOSTRAR_PROFESIONALES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES" />
+        <Function Name="SP_AUTENTICAR_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES">
+          <Parameter Name="I_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="I_CONTRASENIA" Type="varchar2" Mode="In" />
+          <Parameter Name="O_RESULT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="SP_BLOQUEAR_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES">
+          <Parameter Name="I_USUARIO" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERTANTOTEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES">
+          <Parameter Name="ASD" Type="number" Mode="In" />
+          <Parameter Name="ASDAWER" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES">
+          <Parameter Name="I_RUT_PRO" Type="varchar2" Mode="In" />
+          <Parameter Name="I_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="AP_PAT" Type="varchar2" Mode="In" />
+          <Parameter Name="AP_MAT" Type="varchar2" Mode="In" />
+          <Parameter Name="I_FEC_NAC_DD_MM_YYYY" Type="varchar2" Mode="In" />
+          <Parameter Name="I_CEL" Type="number" Mode="In" />
+          <Parameter Name="I_DOMI" Type="varchar2" Mode="In" />
+          <Parameter Name="I_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="I_GENERO" Type="number" Mode="In" />
+          <Parameter Name="I_COMUNA" Type="number" Mode="In" />
+          <Parameter Name="I_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="I_PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="O_RESULT" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="SP_TEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ACCIDENTES">
+          <Parameter Name="O_RES" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ProyectoModeloStoreContainer">
+          <EntitySet Name="ACT_TRAB" EntityType="Self.ACT_TRAB" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ASISTENTE" EntityType="Self.ASISTENTE" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CHECKLIST" EntityType="Self.CHECKLIST" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CLIENTE_EMPRESA" EntityType="Self.CLIENTE_EMPRESA" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CONTRATO_PLAN" EntityType="Self.CONTRATO_PLAN" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CONTRATO_SERVICIO" EntityType="Self.CONTRATO_SERVICIO" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CREDENCIAL" EntityType="Self.CREDENCIAL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="DETALLE_FACTURA" EntityType="Self.DETALLE_FACTURA" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ESTADO_ACTIVIDAD" EntityType="Self.ESTADO_ACTIVIDAD" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ESTADO_CHECK" EntityType="Self.ESTADO_CHECK" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ESTADO_CLIENTE" EntityType="Self.ESTADO_CLIENTE" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ESTADO_CREDENCIAL" EntityType="Self.ESTADO_CREDENCIAL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ESTADO_FACTURA" EntityType="Self.ESTADO_FACTURA" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="GENERO" EntityType="Self.GENERO" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="INTERACCION" EntityType="Self.INTERACCION" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="LOGIN_FAIL" EntityType="Self.LOGIN_FAIL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="PLAN" EntityType="Self.PLAN" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="REGISTRO_ERROR" EntityType="Self.REGISTRO_ERROR" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="REP_CLI_EMP" EntityType="Self.REP_CLI_EMP" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="REP_PROFESIONAL" EntityType="Self.REP_PROFESIONAL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="TIPO_INTERACCION" EntityType="Self.TIPO_INTERACCION" Schema="ACCIDENTES" store:Type="Tables" />
+          <EntitySet Name="CLIENTE_RUBRO" EntityType="Self.CLIENTE_RUBRO" store:Type="Tables" store:Schema="ACCIDENTES">
+            <DefiningQuery>SELECT 
+"CLIENTE_RUBRO"."COD_RUBRO" AS "COD_RUBRO", 
+"CLIENTE_RUBRO"."ID_CLIENTE" AS "ID_CLIENTE"
+FROM "ACCIDENTES"."CLIENTE_RUBRO" "CLIENTE_RUBRO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MAT_ACTIV" EntityType="Self.MAT_ACTIV" store:Type="Tables" store:Schema="ACCIDENTES">
+            <DefiningQuery>SELECT 
+"MAT_ACTIV"."COD_MATERIAL" AS "COD_MATERIAL", 
+"MAT_ACTIV"."ID_ACTIVIDAD" AS "ID_ACTIVIDAD"
+FROM "ACCIDENTES"."MAT_ACTIV" "MAT_ACTIV"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PLAN_SERVICIO" EntityType="Self.PLAN_SERVICIO" store:Type="Tables" store:Schema="ACCIDENTES">
+            <DefiningQuery>SELECT 
+"PLAN_SERVICIO"."ID_PLAN" AS "ID_PLAN", 
+"PLAN_SERVICIO"."ID_SERVICIO" AS "ID_SERVICIO", 
+"PLAN_SERVICIO"."CANTIDAD" AS "CANTIDAD"
+FROM "ACCIDENTES"."PLAN_SERVICIO" "PLAN_SERVICIO"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="ACT_TRAB_ACTIVIDAD_FK" Association="Self.ACT_TRAB_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="ACT_TRAB" EntitySet="ACT_TRAB" />
+          </AssociationSet>
+          <AssociationSet Name="ACT_TRAB_ASISTENTE_FK" Association="Self.ACT_TRAB_ASISTENTE_FK">
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+            <End Role="ACT_TRAB" EntitySet="ACT_TRAB" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_CHECKLIST_FK" Association="Self.ACTIVIDAD_CHECKLIST_FK">
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_CLIENTE_EMPRESA_FK" Association="Self.ACTIVIDAD_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_ESTADO_ACTIVIDAD_FK" Association="Self.ACTIVIDAD_ESTADO_ACTIVIDAD_FK">
+            <End Role="ESTADO_ACTIVIDAD" EntitySet="ESTADO_ACTIVIDAD" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_PROFESIONAL_FK" Association="Self.ACTIVIDAD_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_SERVICIO_FK" Association="Self.ACTIVIDAD_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_CLIENTE_EMPRESA_FK" Association="Self.ASISTENTE_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_COMUNA_FK" Association="Self.ASISTENTE_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_GENERO_FK" Association="Self.ASISTENTE_GENERO_FK">
+            <End Role="GENERO" EntitySet="GENERO" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_CLIE_EMPR_FK" Association="Self.CHECK_CLIE_EMPR_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_EST_CHECK_FK" Association="Self.CHECK_EST_CHECK_FK">
+            <End Role="ESTADO_CHECK" EntitySet="ESTADO_CHECK" />
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+          </AssociationSet>
+          <AssociationSet Name="CLI_EMP_EST_CLI_FK" Association="Self.CLI_EMP_EST_CLI_FK">
+            <End Role="ESTADO_CLIENTE" EntitySet="ESTADO_CLIENTE" />
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="CLI_RUBRO_CLI_EMP_FK" Association="Self.CLI_RUBRO_CLI_EMP_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CLIENTE_RUBRO" EntitySet="CLIENTE_RUBRO" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_EMPRESA_COMUNA_FK" Association="Self.CLIENTE_EMPRESA_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_RUBRO_RUBRO_FK" Association="Self.CLIENTE_RUBRO_RUBRO_FK">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="CLIENTE_RUBRO" EntitySet="CLIENTE_RUBRO" />
+          </AssociationSet>
+          <AssociationSet Name="COMUNA_REGION_FK" Association="Self.COMUNA_REGION_FK">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CLIENTE_EMPRESA_FK" Association="Self.CONTRATO_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_CONTRATO_FK" Association="Self.CONTRATO_PLAN_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="CONTRATO_PLAN" EntitySet="CONTRATO_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_PLAN_FK" Association="Self.CONTRATO_PLAN_PLAN_FK">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="CONTRATO_PLAN" EntitySet="CONTRATO_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_CONTRATO_FK" Association="Self.CONTRATO_SERVICIO_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="CONTRATO_SERVICIO" EntitySet="CONTRATO_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_SERVICIO_FK" Association="Self.CONTRATO_SERVICIO_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="CONTRATO_SERVICIO" EntitySet="CONTRATO_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="CRED_CLI_EMP_FK" Association="Self.CRED_CLI_EMP_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="CRED_EST_CRED_FK" Association="Self.CRED_EST_CRED_FK">
+            <End Role="ESTADO_CREDENCIAL" EntitySet="ESTADO_CREDENCIAL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="CREDENCIAL_PROFESIONAL_FK" Association="Self.CREDENCIAL_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="CREDENCIAL_ROL_FK" Association="Self.CREDENCIAL_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="DET_FACT_ACTIV_FK" Association="Self.DET_FACT_ACTIV_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="DET_FACT_FACT_FK" Association="Self.DET_FACT_FACT_FK">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_CLIENTE_EMPRESA_FK" Association="Self.FACTURA_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_CONTRATO_FK" Association="Self.FACTURA_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_ESTADO_FACTURA_FK" Association="Self.FACTURA_ESTADO_FACTURA_FK">
+            <End Role="ESTADO_FACTURA" EntitySet="ESTADO_FACTURA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="INTER_ACT_FK" Association="Self.INTER_ACT_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="INTER_TIP_INTER_FK" Association="Self.INTER_TIP_INTER_FK">
+            <End Role="TIPO_INTERACCION" EntitySet="TIPO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="MAT_ACTIV_ACTIVIDAD_FK" Association="Self.MAT_ACTIV_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="MAT_ACTIV" EntitySet="MAT_ACTIV" />
+          </AssociationSet>
+          <AssociationSet Name="MAT_ACTIV_MATERIAL_FK" Association="Self.MAT_ACTIV_MATERIAL_FK">
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+            <End Role="MAT_ACTIV" EntitySet="MAT_ACTIV" />
+          </AssociationSet>
+          <AssociationSet Name="PLAN_SERVICIO_PLAN_FK" Association="Self.PLAN_SERVICIO_PLAN_FK">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="PLAN_SERVICIO" EntitySet="PLAN_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="PLAN_SERVICIO_SERVICIO_FK" Association="Self.PLAN_SERVICIO_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="PLAN_SERVICIO" EntitySet="PLAN_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_COMUNA_FK" Association="Self.PROFESIONAL_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_GENERO_FK" Association="Self.PROFESIONAL_GENERO_FK">
+            <End Role="GENERO" EntitySet="GENERO" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="REGION_PAIS_FK" Association="Self.REGION_PAIS_FK">
+            <End Role="PAIS" EntitySet="PAIS" />
+            <End Role="REGION" EntitySet="REGION" />
+          </AssociationSet>
+          <AssociationSet Name="REP_CLI_EMP_CLI_EMP_FK" Association="Self.REP_CLI_EMP_CLI_EMP_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="REP_CLI_EMP" EntitySet="REP_CLI_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="REP_PRO_PRO_FK" Association="Self.REP_PRO_PRO_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="REP_PROFESIONAL" EntitySet="REP_PROFESIONAL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACT_TRAB">
+          <Key>
+            <PropertyRef Name="ID_ACT_TRAB" />
+          </Key>
+          <Property Name="ID_ACT_TRAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ASISTENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACT_TRAB_ACTIVIDAD_FK" FromRole="ACT_TRAB" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="ASISTENTE" Relationship="Self.ACT_TRAB_ASISTENTE_FK" FromRole="ACT_TRAB" ToRole="ASISTENTE" />
+        </EntityType>
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_ACTIVIDAD" Type="DateTime" Nullable="false" />
+          <Property Name="HORA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINUTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_ACT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_CHECK" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="ACT_TRAB" Relationship="Self.ACT_TRAB_ACTIVIDAD_FK" FromRole="ACTIVIDAD" ToRole="ACT_TRAB" />
+          <NavigationProperty Name="CHECKLIST" Relationship="Self.ACTIVIDAD_CHECKLIST_FK" FromRole="ACTIVIDAD" ToRole="CHECKLIST" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.ACTIVIDAD_CLIENTE_EMPRESA_FK" FromRole="ACTIVIDAD" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="ESTADO_ACTIVIDAD" Relationship="Self.ACTIVIDAD_ESTADO_ACTIVIDAD_FK" FromRole="ACTIVIDAD" ToRole="ESTADO_ACTIVIDAD" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.ACTIVIDAD_PROFESIONAL_FK" FromRole="ACTIVIDAD" ToRole="PROFESIONAL" />
+          <NavigationProperty Name="SERVICIO" Relationship="Self.ACTIVIDAD_SERVICIO_FK" FromRole="ACTIVIDAD" ToRole="SERVICIO" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.DET_FACT_ACTIV_FK" FromRole="ACTIVIDAD" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="INTERACCION" Relationship="Self.INTER_ACT_FK" FromRole="ACTIVIDAD" ToRole="INTERACCION" />
+          <NavigationProperty Name="MATERIAL" Relationship="Self.MAT_ACTIV" FromRole="ACTIVIDAD" ToRole="MATERIAL" />
+        </EntityType>
+        <EntityType Name="ASISTENTE">
+          <Key>
+            <PropertyRef Name="ID_ASISTENTE" />
+          </Key>
+          <Property Name="ID_ASISTENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_TRABAJADOR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AP_PAT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AP_MAT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUM_ACCIDENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACC_POST_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CAPACITACION" Type="DateTime" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_GENERO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACT_TRAB" Relationship="Self.ACT_TRAB_ASISTENTE_FK" FromRole="ASISTENTE" ToRole="ACT_TRAB" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.ASISTENTE_CLIENTE_EMPRESA_FK" FromRole="ASISTENTE" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.ASISTENTE_COMUNA_FK" FromRole="ASISTENTE" ToRole="COMUNA" />
+          <NavigationProperty Name="GENERO" Relationship="Self.ASISTENTE_GENERO_FK" FromRole="ASISTENTE" ToRole="GENERO" />
+        </EntityType>
+        <EntityType Name="CHECKLIST">
+          <Key>
+            <PropertyRef Name="ID_CHECK" />
+          </Key>
+          <Property Name="ID_CHECK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_RIESGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EST_CHECK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_CHECKLIST_FK" FromRole="CHECKLIST" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CHECK_CLIE_EMPR_FK" FromRole="CHECKLIST" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="ESTADO_CHECK" Relationship="Self.CHECK_EST_CHECK_FK" FromRole="CHECKLIST" ToRole="ESTADO_CHECK" />
+        </EntityType>
+        <EntityType Name="CLIENTE_EMPRESA">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_EMPRESA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAIL_EMPRESA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_CLIENT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_CLIENTE_EMPRESA_FK" FromRole="CLIENTE_EMPRESA" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="ASISTENTE" Relationship="Self.ASISTENTE_CLIENTE_EMPRESA_FK" FromRole="CLIENTE_EMPRESA" ToRole="ASISTENTE" />
+          <NavigationProperty Name="CHECKLIST" Relationship="Self.CHECK_CLIE_EMPR_FK" FromRole="CLIENTE_EMPRESA" ToRole="CHECKLIST" />
+          <NavigationProperty Name="ESTADO_CLIENTE" Relationship="Self.CLI_EMP_EST_CLI_FK" FromRole="CLIENTE_EMPRESA" ToRole="ESTADO_CLIENTE" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.CLIENTE_EMPRESA_COMUNA_FK" FromRole="CLIENTE_EMPRESA" ToRole="COMUNA" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_CLIENTE_EMPRESA_FK" FromRole="CLIENTE_EMPRESA" ToRole="CONTRATO" />
+          <NavigationProperty Name="CREDENCIAL" Relationship="Self.CRED_CLI_EMP_FK" FromRole="CLIENTE_EMPRESA" ToRole="CREDENCIAL" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FACTURA_CLIENTE_EMPRESA_FK" FromRole="CLIENTE_EMPRESA" ToRole="FACTURA" />
+          <NavigationProperty Name="REP_CLI_EMP" Relationship="Self.REP_CLI_EMP_CLI_EMP_FK" FromRole="CLIENTE_EMPRESA" ToRole="REP_CLI_EMP" />
+          <NavigationProperty Name="RUBRO" Relationship="Self.CLIENTE_RUBRO" FromRole="CLIENTE_EMPRESA" ToRole="RUBRO" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ASISTENTE" Relationship="Self.ASISTENTE_COMUNA_FK" FromRole="COMUNA" ToRole="ASISTENTE" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CLIENTE_EMPRESA_COMUNA_FK" FromRole="COMUNA" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="REGION" Relationship="Self.COMUNA_REGION_FK" FromRole="COMUNA" ToRole="REGION" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.PROFESIONAL_COMUNA_FK" FromRole="COMUNA" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="CONTRATO">
+          <Key>
+            <PropertyRef Name="COD_CONTRATO" />
+          </Key>
+          <Property Name="COD_CONTRATO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECH_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="MONTO_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_VENCIMIENTO" Type="DateTime" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CONTRATO_CLIENTE_EMPRESA_FK" FromRole="CONTRATO" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="CONTRATO_PLAN" Relationship="Self.CONTRATO_PLAN_CONTRATO_FK" FromRole="CONTRATO" ToRole="CONTRATO_PLAN" />
+          <NavigationProperty Name="CONTRATO_SERVICIO" Relationship="Self.CONTRATO_SERVICIO_CONTRATO_FK" FromRole="CONTRATO" ToRole="CONTRATO_SERVICIO" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FACTURA_CONTRATO_FK" FromRole="CONTRATO" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="CONTRATO_PLAN">
+          <Key>
+            <PropertyRef Name="ID_DET_PLAN" />
+          </Key>
+          <Property Name="ID_DET_PLAN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CONTRATO" Type="DateTime" Nullable="false" />
+          <Property Name="ID_PLAN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_PLAN_CONTRATO_FK" FromRole="CONTRATO_PLAN" ToRole="CONTRATO" />
+          <NavigationProperty Name="PLAN" Relationship="Self.CONTRATO_PLAN_PLAN_FK" FromRole="CONTRATO_PLAN" ToRole="PLAN" />
+        </EntityType>
+        <EntityType Name="CONTRATO_SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_DET_SERV" />
+          </Key>
+          <Property Name="ID_DET_SERV" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_CONTRATO" Type="DateTime" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_SERVICIO_CONTRATO_FK" FromRole="CONTRATO_SERVICIO" ToRole="CONTRATO" />
+          <NavigationProperty Name="SERVICIO" Relationship="Self.CONTRATO_SERVICIO_SERVICIO_FK" FromRole="CONTRATO_SERVICIO" ToRole="SERVICIO" />
+        </EntityType>
+        <EntityType Name="CREDENCIAL">
+          <Key>
+            <PropertyRef Name="ID_CREDENCIAL" />
+          </Key>
+          <Property Name="ID_CREDENCIAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_CRED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_CREDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CRED_CLI_EMP_FK" FromRole="CREDENCIAL" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="ESTADO_CREDENCIAL" Relationship="Self.CRED_EST_CRED_FK" FromRole="CREDENCIAL" ToRole="ESTADO_CREDENCIAL" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.CREDENCIAL_PROFESIONAL_FK" FromRole="CREDENCIAL" ToRole="PROFESIONAL" />
+          <NavigationProperty Name="ROL" Relationship="Self.CREDENCIAL_ROL_FK" FromRole="CREDENCIAL" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="DETALLE_FACTURA">
+          <Key>
+            <PropertyRef Name="ID_DET_FACTURA" />
+          </Key>
+          <Property Name="ID_DET_FACTURA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_SERVICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COSTO_ASOCIADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_FACTURA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.DET_FACT_ACTIV_FK" FromRole="DETALLE_FACTURA" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.DET_FACT_FACT_FK" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="ESTADO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_EST_ACT" />
+          </Key>
+          <Property Name="ID_EST_ACT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_ESTADO_ACTIVIDAD_FK" FromRole="ESTADO_ACTIVIDAD" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="ESTADO_CHECK">
+          <Key>
+            <PropertyRef Name="ID_EST_CHECK" />
+          </Key>
+          <Property Name="ID_EST_CHECK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CHECKLIST" Relationship="Self.CHECK_EST_CHECK_FK" FromRole="ESTADO_CHECK" ToRole="CHECKLIST" />
+        </EntityType>
+        <EntityType Name="ESTADO_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_EST_CLIENT" />
+          </Key>
+          <Property Name="ID_EST_CLIENT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CLI_EMP_EST_CLI_FK" FromRole="ESTADO_CLIENTE" ToRole="CLIENTE_EMPRESA" />
+        </EntityType>
+        <EntityType Name="ESTADO_CREDENCIAL">
+          <Key>
+            <PropertyRef Name="ID_EST_CREDEN" />
+          </Key>
+          <Property Name="ID_EST_CREDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CREDENCIAL" Relationship="Self.CRED_EST_CRED_FK" FromRole="ESTADO_CREDENCIAL" ToRole="CREDENCIAL" />
+        </EntityType>
+        <EntityType Name="ESTADO_FACTURA">
+          <Key>
+            <PropertyRef Name="ID_EST_FACT" />
+          </Key>
+          <Property Name="ID_EST_FACT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FACTURA_ESTADO_FACTURA_FK" FromRole="ESTADO_FACTURA" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="NUM_FACTURA" />
+          </Key>
+          <Property Name="NUM_FACTURA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_BASE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECH_EMISION" Type="DateTime" Nullable="false" />
+          <Property Name="FECH_VENC" Type="DateTime" Nullable="false" />
+          <Property Name="MONTO_EXTRA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_MORA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CONTRATO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EST_FACT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.FACTURA_CLIENTE_EMPRESA_FK" FromRole="FACTURA" ToRole="CLIENTE_EMPRESA" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.FACTURA_CONTRATO_FK" FromRole="FACTURA" ToRole="CONTRATO" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.DET_FACT_FACT_FK" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="ESTADO_FACTURA" Relationship="Self.FACTURA_ESTADO_FACTURA_FK" FromRole="FACTURA" ToRole="ESTADO_FACTURA" />
+        </EntityType>
+        <EntityType Name="GENERO">
+          <Key>
+            <PropertyRef Name="ID_GENERO" />
+          </Key>
+          <Property Name="ID_GENERO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ASISTENTE" Relationship="Self.ASISTENTE_GENERO_FK" FromRole="GENERO" ToRole="ASISTENTE" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.PROFESIONAL_GENERO_FK" FromRole="GENERO" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_INTERACCION" />
+          </Key>
+          <Property Name="ID_INTERACCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_INTERACCION" Type="DateTime" Nullable="false" />
+          <Property Name="HORA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MINUTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIP_INTER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.INTER_ACT_FK" FromRole="INTERACCION" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="TIPO_INTERACCION" Relationship="Self.INTER_TIP_INTER_FK" FromRole="INTERACCION" ToRole="TIPO_INTERACCION" />
+        </EntityType>
+        <EntityType Name="LOGIN_FAIL">
+          <Key>
+            <PropertyRef Name="ID_FAIL" />
+          </Key>
+          <Property Name="ID_FAIL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USER_FAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASS_FAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INTENTO" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATERIAL">
+          <Key>
+            <PropertyRef Name="COD_MATERIAL" />
+          </Key>
+          <Property Name="COD_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANT_DISPONIBLE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.MAT_ACTIV" FromRole="MATERIAL" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="PAIS">
+          <Key>
+            <PropertyRef Name="ID_PAIS" />
+          </Key>
+          <Property Name="ID_PAIS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REGION" Relationship="Self.REGION_PAIS_FK" FromRole="PAIS" ToRole="REGION" />
+        </EntityType>
+        <EntityType Name="PLAN">
+          <Key>
+            <PropertyRef Name="ID_PLAN" />
+          </Key>
+          <Property Name="ID_PLAN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_PLAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FEC_INI_VIGENCIA" Type="DateTime" Nullable="false" />
+          <Property Name="FEC_FIN_VIGENCIA" Type="DateTime" />
+          <NavigationProperty Name="CONTRATO_PLAN" Relationship="Self.CONTRATO_PLAN_PLAN_FK" FromRole="PLAN" ToRole="CONTRATO_PLAN" />
+          <NavigationProperty Name="PLAN_SERVICIO" Relationship="Self.PLAN_SERVICIO_PLAN_FK" FromRole="PLAN" ToRole="PLAN_SERVICIO" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_PROFESIONAL" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AP_PAT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AP_MAT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FEC_NACIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="TELEFONO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_GENERO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_PROFESIONAL_FK" FromRole="PROFESIONAL" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.PROFESIONAL_COMUNA_FK" FromRole="PROFESIONAL" ToRole="COMUNA" />
+          <NavigationProperty Name="CREDENCIAL" Relationship="Self.CREDENCIAL_PROFESIONAL_FK" FromRole="PROFESIONAL" ToRole="CREDENCIAL" />
+          <NavigationProperty Name="GENERO" Relationship="Self.PROFESIONAL_GENERO_FK" FromRole="PROFESIONAL" ToRole="GENERO" />
+          <NavigationProperty Name="REP_PROFESIONAL" Relationship="Self.REP_PRO_PRO_FK" FromRole="PROFESIONAL" ToRole="REP_PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PAIS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_REGION_FK" FromRole="REGION" ToRole="COMUNA" />
+          <NavigationProperty Name="PAIS" Relationship="Self.REGION_PAIS_FK" FromRole="REGION" ToRole="PAIS" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ERROR">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PROCEDIMIENTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COD_ERROR_DB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REP_CLI_EMP">
+          <Key>
+            <PropertyRef Name="ID_REP_CLIEMP" />
+          </Key>
+          <Property Name="ID_REP_CLIEMP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_VISITAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ASESORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_LLAMADA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANT_NVA_IMPLEMEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_ACC_PRE_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_ACC_POST_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_MULTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_DEMANDA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="N_DIA_PERDIDO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MONTO_COTIZACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.REP_CLI_EMP_CLI_EMP_FK" FromRole="REP_CLI_EMP" ToRole="CLIENTE_EMPRESA" />
+        </EntityType>
+        <EntityType Name="REP_PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_REP_PRO" />
+          </Key>
+          <Property Name="ID_REP_PRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANT_CAP_PRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACC_POST_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_ATRASADA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_CANCEL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_ACT_TERMIN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.REP_PRO_PRO_FK" FromRole="REP_PROFESIONAL" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CREDENCIAL" Relationship="Self.CREDENCIAL_ROL_FK" FromRole="ROL" ToRole="CREDENCIAL" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="COD_RUBRO" />
+          </Key>
+          <Property Name="COD_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_EMPRESA" Relationship="Self.CLIENTE_RUBRO" FromRole="RUBRO" ToRole="CLIENTE_EMPRESA" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_SERVICIO" />
+          </Key>
+          <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="REGLA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_SERVICIO_FK" FromRole="SERVICIO" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="CONTRATO_SERVICIO" Relationship="Self.CONTRATO_SERVICIO_SERVICIO_FK" FromRole="SERVICIO" ToRole="CONTRATO_SERVICIO" />
+          <NavigationProperty Name="PLAN_SERVICIO" Relationship="Self.PLAN_SERVICIO_SERVICIO_FK" FromRole="SERVICIO" ToRole="PLAN_SERVICIO" />
+        </EntityType>
+        <EntityType Name="TIPO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_TIP_INTER" />
+          </Key>
+          <Property Name="ID_TIP_INTER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INTERACCION" Relationship="Self.INTER_TIP_INTER_FK" FromRole="TIPO_INTERACCION" ToRole="INTERACCION" />
+        </EntityType>
+        <EntityType Name="PLAN_SERVICIO">
+          <Key>
+            <PropertyRef Name="ID_PLAN" />
+            <PropertyRef Name="ID_SERVICIO" />
+            <PropertyRef Name="CANTIDAD" />
+          </Key>
+          <Property Name="ID_PLAN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PLAN" Relationship="Self.PLAN_SERVICIO_PLAN_FK" FromRole="PLAN_SERVICIO" ToRole="PLAN" />
+          <NavigationProperty Name="SERVICIO" Relationship="Self.PLAN_SERVICIO_SERVICIO_FK" FromRole="PLAN_SERVICIO" ToRole="SERVICIO" />
+        </EntityType>
+        <Association Name="ACT_TRAB_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACT_TRAB" Type="Self.ACT_TRAB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="ACT_TRAB">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACT_TRAB_ASISTENTE_FK">
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="1" />
+          <End Role="ACT_TRAB" Type="Self.ACT_TRAB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASISTENTE">
+              <PropertyRef Name="ID_ASISTENTE" />
+            </Principal>
+            <Dependent Role="ACT_TRAB">
+              <PropertyRef Name="ID_ASISTENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_CHECKLIST_FK">
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHECKLIST">
+              <PropertyRef Name="ID_CHECK" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CHECK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_ESTADO_ACTIVIDAD_FK">
+          <End Role="ESTADO_ACTIVIDAD" Type="Self.ESTADO_ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_ACTIVIDAD">
+              <PropertyRef Name="ID_EST_ACT" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_EST_ACT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DET_FACT_ACTIV_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTER_ACT_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASISTENTE_GENERO_FK">
+          <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+          <End Role="ASISTENTE" Type="Self.ASISTENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENERO">
+              <PropertyRef Name="ID_GENERO" />
+            </Principal>
+            <Dependent Role="ASISTENTE">
+              <PropertyRef Name="ID_GENERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_CLIE_EMPR_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CHECKLIST">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CHECK_EST_CHECK_FK">
+          <End Role="ESTADO_CHECK" Type="Self.ESTADO_CHECK" Multiplicity="1" />
+          <End Role="CHECKLIST" Type="Self.CHECKLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CHECK">
+              <PropertyRef Name="ID_EST_CHECK" />
+            </Principal>
+            <Dependent Role="CHECKLIST">
+              <PropertyRef Name="ID_EST_CHECK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLI_EMP_EST_CLI_FK">
+          <End Role="ESTADO_CLIENTE" Type="Self.ESTADO_CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CLIENTE">
+              <PropertyRef Name="ID_EST_CLIENT" />
+            </Principal>
+            <Dependent Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_EST_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_EMPRESA_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CRED_CLI_EMP_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="0..1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_CLIENTE_EMPRESA_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REP_CLI_EMP_CLI_EMP_FK">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="1" />
+          <End Role="REP_CLI_EMP" Type="Self.REP_CLI_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_EMPRESA">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="REP_CLI_EMP">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMUNA_REGION_FK">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_COMUNA_FK">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO_PLAN" Type="Self.CONTRATO_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATO_PLAN">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO_SERVICIO" Type="Self.CONTRATO_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATO_SERVICIO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_CONTRATO_FK">
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="COD_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_PLAN_FK">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="1" />
+          <End Role="CONTRATO_PLAN" Type="Self.CONTRATO_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Principal>
+            <Dependent Role="CONTRATO_PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="CONTRATO_SERVICIO" Type="Self.CONTRATO_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="CONTRATO_SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CRED_EST_CRED_FK">
+          <End Role="ESTADO_CREDENCIAL" Type="Self.ESTADO_CREDENCIAL" Multiplicity="1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CREDENCIAL">
+              <PropertyRef Name="ID_EST_CREDEN" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_EST_CREDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CREDENCIAL_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="0..1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CREDENCIAL_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="CREDENCIAL" Type="Self.CREDENCIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="CREDENCIAL">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DET_FACT_FACT_FK">
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="NUM_FACTURA" />
+            </Principal>
+            <Dependent Role="DETALLE_FACTURA">
+              <PropertyRef Name="NUM_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_ESTADO_FACTURA_FK">
+          <End Role="ESTADO_FACTURA" Type="Self.ESTADO_FACTURA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_FACTURA">
+              <PropertyRef Name="ID_EST_FACT" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_EST_FACT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_GENERO_FK">
+          <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENERO">
+              <PropertyRef Name="ID_GENERO" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_GENERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTER_TIP_INTER_FK">
+          <End Role="TIPO_INTERACCION" Type="Self.TIPO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_INTERACCION">
+              <PropertyRef Name="ID_TIP_INTER" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_TIP_INTER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGION_PAIS_FK">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+          <End Role="REGION" Type="Self.REGION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="REGION">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAN_SERVICIO_PLAN_FK">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="1" />
+          <End Role="PLAN_SERVICIO" Type="Self.PLAN_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="ID_PLAN" />
+            </Principal>
+            <Dependent Role="PLAN_SERVICIO">
+              <PropertyRef Name="ID_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REP_PRO_PRO_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="REP_PROFESIONAL" Type="Self.REP_PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="REP_PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAN_SERVICIO_SERVICIO_FK">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="PLAN_SERVICIO" Type="Self.PLAN_SERVICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="PLAN_SERVICIO">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_RUBRO">
+          <End Role="CLIENTE_EMPRESA" Type="Self.CLIENTE_EMPRESA" Multiplicity="*" />
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="*" />
+        </Association>
+        <Association Name="MAT_ACTIV">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACT_TRAB" EntityType="Self.ACT_TRAB" />
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="ASISTENTE" EntityType="Self.ASISTENTE" />
+          <EntitySet Name="CHECKLIST" EntityType="Self.CHECKLIST" />
+          <EntitySet Name="CLIENTE_EMPRESA" EntityType="Self.CLIENTE_EMPRESA" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" />
+          <EntitySet Name="CONTRATO_PLAN" EntityType="Self.CONTRATO_PLAN" />
+          <EntitySet Name="CONTRATO_SERVICIO" EntityType="Self.CONTRATO_SERVICIO" />
+          <EntitySet Name="CREDENCIAL" EntityType="Self.CREDENCIAL" />
+          <EntitySet Name="DETALLE_FACTURA" EntityType="Self.DETALLE_FACTURA" />
+          <EntitySet Name="ESTADO_ACTIVIDAD" EntityType="Self.ESTADO_ACTIVIDAD" />
+          <EntitySet Name="ESTADO_CHECK" EntityType="Self.ESTADO_CHECK" />
+          <EntitySet Name="ESTADO_CLIENTE" EntityType="Self.ESTADO_CLIENTE" />
+          <EntitySet Name="ESTADO_CREDENCIAL" EntityType="Self.ESTADO_CREDENCIAL" />
+          <EntitySet Name="ESTADO_FACTURA" EntityType="Self.ESTADO_FACTURA" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+          <EntitySet Name="GENERO" EntityType="Self.GENERO" />
+          <EntitySet Name="INTERACCION" EntityType="Self.INTERACCION" />
+          <EntitySet Name="LOGIN_FAIL" EntityType="Self.LOGIN_FAIL" />
+          <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" />
+          <EntitySet Name="PAIS" EntityType="Self.PAIS" />
+          <EntitySet Name="PLAN" EntityType="Self.PLAN" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" />
+          <EntitySet Name="REGISTRO_ERROR" EntityType="Self.REGISTRO_ERROR" />
+          <EntitySet Name="REP_CLI_EMP" EntityType="Self.REP_CLI_EMP" />
+          <EntitySet Name="REP_PROFESIONAL" EntityType="Self.REP_PROFESIONAL" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" />
+          <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" />
+          <EntitySet Name="TIPO_INTERACCION" EntityType="Self.TIPO_INTERACCION" />
+          <EntitySet Name="PLAN_SERVICIO" EntityType="Self.PLAN_SERVICIO" />
+          <AssociationSet Name="ACT_TRAB_ACTIVIDAD_FK" Association="Self.ACT_TRAB_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="ACT_TRAB" EntitySet="ACT_TRAB" />
+          </AssociationSet>
+          <AssociationSet Name="ACT_TRAB_ASISTENTE_FK" Association="Self.ACT_TRAB_ASISTENTE_FK">
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+            <End Role="ACT_TRAB" EntitySet="ACT_TRAB" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_CHECKLIST_FK" Association="Self.ACTIVIDAD_CHECKLIST_FK">
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_CLIENTE_EMPRESA_FK" Association="Self.ACTIVIDAD_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_ESTADO_ACTIVIDAD_FK" Association="Self.ACTIVIDAD_ESTADO_ACTIVIDAD_FK">
+            <End Role="ESTADO_ACTIVIDAD" EntitySet="ESTADO_ACTIVIDAD" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_PROFESIONAL_FK" Association="Self.ACTIVIDAD_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_SERVICIO_FK" Association="Self.ACTIVIDAD_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="DET_FACT_ACTIV_FK" Association="Self.DET_FACT_ACTIV_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="INTER_ACT_FK" Association="Self.INTER_ACT_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_CLIENTE_EMPRESA_FK" Association="Self.ASISTENTE_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_COMUNA_FK" Association="Self.ASISTENTE_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ASISTENTE_GENERO_FK" Association="Self.ASISTENTE_GENERO_FK">
+            <End Role="GENERO" EntitySet="GENERO" />
+            <End Role="ASISTENTE" EntitySet="ASISTENTE" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_CLIE_EMPR_FK" Association="Self.CHECK_CLIE_EMPR_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+          </AssociationSet>
+          <AssociationSet Name="CHECK_EST_CHECK_FK" Association="Self.CHECK_EST_CHECK_FK">
+            <End Role="ESTADO_CHECK" EntitySet="ESTADO_CHECK" />
+            <End Role="CHECKLIST" EntitySet="CHECKLIST" />
+          </AssociationSet>
+          <AssociationSet Name="CLI_EMP_EST_CLI_FK" Association="Self.CLI_EMP_EST_CLI_FK">
+            <End Role="ESTADO_CLIENTE" EntitySet="ESTADO_CLIENTE" />
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_EMPRESA_COMUNA_FK" Association="Self.CLIENTE_EMPRESA_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CLIENTE_EMPRESA_FK" Association="Self.CONTRATO_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CRED_CLI_EMP_FK" Association="Self.CRED_CLI_EMP_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_CLIENTE_EMPRESA_FK" Association="Self.FACTURA_CLIENTE_EMPRESA_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="REP_CLI_EMP_CLI_EMP_FK" Association="Self.REP_CLI_EMP_CLI_EMP_FK">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="REP_CLI_EMP" EntitySet="REP_CLI_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="COMUNA_REGION_FK" Association="Self.COMUNA_REGION_FK">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_COMUNA_FK" Association="Self.PROFESIONAL_COMUNA_FK">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_CONTRATO_FK" Association="Self.CONTRATO_PLAN_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="CONTRATO_PLAN" EntitySet="CONTRATO_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_CONTRATO_FK" Association="Self.CONTRATO_SERVICIO_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="CONTRATO_SERVICIO" EntitySet="CONTRATO_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_CONTRATO_FK" Association="Self.FACTURA_CONTRATO_FK">
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_PLAN_FK" Association="Self.CONTRATO_PLAN_PLAN_FK">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="CONTRATO_PLAN" EntitySet="CONTRATO_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_SERVICIO_FK" Association="Self.CONTRATO_SERVICIO_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="CONTRATO_SERVICIO" EntitySet="CONTRATO_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="CRED_EST_CRED_FK" Association="Self.CRED_EST_CRED_FK">
+            <End Role="ESTADO_CREDENCIAL" EntitySet="ESTADO_CREDENCIAL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="CREDENCIAL_PROFESIONAL_FK" Association="Self.CREDENCIAL_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="CREDENCIAL_ROL_FK" Association="Self.CREDENCIAL_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="CREDENCIAL" EntitySet="CREDENCIAL" />
+          </AssociationSet>
+          <AssociationSet Name="DET_FACT_FACT_FK" Association="Self.DET_FACT_FACT_FK">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_ESTADO_FACTURA_FK" Association="Self.FACTURA_ESTADO_FACTURA_FK">
+            <End Role="ESTADO_FACTURA" EntitySet="ESTADO_FACTURA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_GENERO_FK" Association="Self.PROFESIONAL_GENERO_FK">
+            <End Role="GENERO" EntitySet="GENERO" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="INTER_TIP_INTER_FK" Association="Self.INTER_TIP_INTER_FK">
+            <End Role="TIPO_INTERACCION" EntitySet="TIPO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="REGION_PAIS_FK" Association="Self.REGION_PAIS_FK">
+            <End Role="PAIS" EntitySet="PAIS" />
+            <End Role="REGION" EntitySet="REGION" />
+          </AssociationSet>
+          <AssociationSet Name="PLAN_SERVICIO_PLAN_FK" Association="Self.PLAN_SERVICIO_PLAN_FK">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="PLAN_SERVICIO" EntitySet="PLAN_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="REP_PRO_PRO_FK" Association="Self.REP_PRO_PRO_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="REP_PROFESIONAL" EntitySet="REP_PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="PLAN_SERVICIO_SERVICIO_FK" Association="Self.PLAN_SERVICIO_SERVICIO_FK">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="PLAN_SERVICIO" EntitySet="PLAN_SERVICIO" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_RUBRO" Association="Self.CLIENTE_RUBRO">
+            <End Role="CLIENTE_EMPRESA" EntitySet="CLIENTE_EMPRESA" />
+            <End Role="RUBRO" EntitySet="RUBRO" />
+          </AssociationSet>
+          <AssociationSet Name="MAT_ACTIV" Association="Self.MAT_ACTIV">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
+          </AssociationSet>
+          <FunctionImport Name="FN_MOSTRAR_PROFESIONALES" />
+          <FunctionImport Name="SP_AUTENTICAR_USUARIO">
+            <Parameter Name="I_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="I_CONTRASENIA" Mode="In" Type="String" />
+            <Parameter Name="O_RESULT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BLOQUEAR_USUARIO">
+          <Parameter Name="I_USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTANTOTEST">
+            <Parameter Name="ASD" Mode="In" Type="Decimal" />
+            <Parameter Name="ASDAWER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_PROFESIONAL">
+            <Parameter Name="I_RUT_PRO" Mode="In" Type="String" />
+            <Parameter Name="I_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="AP_PAT" Mode="In" Type="String" />
+            <Parameter Name="AP_MAT" Mode="In" Type="String" />
+            <Parameter Name="I_FEC_NAC_DD_MM_YYYY" Mode="In" Type="String" />
+            <Parameter Name="I_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="I_DOMI" Mode="In" Type="String" />
+            <Parameter Name="I_CORREO" Mode="In" Type="String" />
+            <Parameter Name="I_GENERO" Mode="In" Type="Decimal" />
+            <Parameter Name="I_COMUNA" Mode="In" Type="Decimal" />
+            <Parameter Name="I_USERNAME" Mode="In" Type="String" />
+            <Parameter Name="I_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="O_RESULT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TEST">
+          <Parameter Name="O_RES" Mode="Out" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModeloStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="ACT_TRAB">
+            <EntityTypeMapping TypeName="ProyectoModelo.ACT_TRAB">
+              <MappingFragment StoreEntitySet="ACT_TRAB">
+                <ScalarProperty Name="ID_ACT_TRAB" ColumnName="ID_ACT_TRAB" />
+                <ScalarProperty Name="ID_ASISTENTE" ColumnName="ID_ASISTENTE" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="ProyectoModelo.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="FECH_ACTIVIDAD" ColumnName="FECH_ACTIVIDAD" />
+                <ScalarProperty Name="HORA" ColumnName="HORA" />
+                <ScalarProperty Name="MINUTO" ColumnName="MINUTO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+                <ScalarProperty Name="ID_EST_ACT" ColumnName="ID_EST_ACT" />
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="ID_CHECK" ColumnName="ID_CHECK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASISTENTE">
+            <EntityTypeMapping TypeName="ProyectoModelo.ASISTENTE">
+              <MappingFragment StoreEntitySet="ASISTENTE">
+                <ScalarProperty Name="ID_ASISTENTE" ColumnName="ID_ASISTENTE" />
+                <ScalarProperty Name="RUT_TRABAJADOR" ColumnName="RUT_TRABAJADOR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="AP_PAT" ColumnName="AP_PAT" />
+                <ScalarProperty Name="AP_MAT" ColumnName="AP_MAT" />
+                <ScalarProperty Name="NUM_ACCIDENTE" ColumnName="NUM_ACCIDENTE" />
+                <ScalarProperty Name="NUM_ACC_POST_CAP" ColumnName="NUM_ACC_POST_CAP" />
+                <ScalarProperty Name="FEC_CAPACITACION" ColumnName="FEC_CAPACITACION" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_GENERO" ColumnName="ID_GENERO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHECKLIST">
+            <EntityTypeMapping TypeName="ProyectoModelo.CHECKLIST">
+              <MappingFragment StoreEntitySet="CHECKLIST">
+                <ScalarProperty Name="ID_CHECK" ColumnName="ID_CHECK" />
+                <ScalarProperty Name="NOMBRE_RIESGO" ColumnName="NOMBRE_RIESGO" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="ID_EST_CHECK" ColumnName="ID_EST_CHECK" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE_EMPRESA">
+            <EntityTypeMapping TypeName="ProyectoModelo.CLIENTE_EMPRESA">
+              <MappingFragment StoreEntitySet="CLIENTE_EMPRESA">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="RUT_EMPRESA" ColumnName="RUT_EMPRESA" />
+                <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="MAIL_EMPRESA" ColumnName="MAIL_EMPRESA" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="ID_EST_CLIENT" ColumnName="ID_EST_CLIENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMUNA">
+            <EntityTypeMapping TypeName="ProyectoModelo.COMUNA">
+              <MappingFragment StoreEntitySet="COMUNA">
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO">
+            <EntityTypeMapping TypeName="ProyectoModelo.CONTRATO">
+              <MappingFragment StoreEntitySet="CONTRATO">
+                <ScalarProperty Name="COD_CONTRATO" ColumnName="COD_CONTRATO" />
+                <ScalarProperty Name="FECH_INICIO" ColumnName="FECH_INICIO" />
+                <ScalarProperty Name="MONTO_PAGO" ColumnName="MONTO_PAGO" />
+                <ScalarProperty Name="FECH_VENCIMIENTO" ColumnName="FECH_VENCIMIENTO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO_PLAN">
+            <EntityTypeMapping TypeName="ProyectoModelo.CONTRATO_PLAN">
+              <MappingFragment StoreEntitySet="CONTRATO_PLAN">
+                <ScalarProperty Name="ID_DET_PLAN" ColumnName="ID_DET_PLAN" />
+                <ScalarProperty Name="FEC_CONTRATO" ColumnName="FEC_CONTRATO" />
+                <ScalarProperty Name="ID_PLAN" ColumnName="ID_PLAN" />
+                <ScalarProperty Name="COD_CONTRATO" ColumnName="COD_CONTRATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO_SERVICIO">
+            <EntityTypeMapping TypeName="ProyectoModelo.CONTRATO_SERVICIO">
+              <MappingFragment StoreEntitySet="CONTRATO_SERVICIO">
+                <ScalarProperty Name="ID_DET_SERV" ColumnName="ID_DET_SERV" />
+                <ScalarProperty Name="FEC_CONTRATO" ColumnName="FEC_CONTRATO" />
+                <ScalarProperty Name="COD_CONTRATO" ColumnName="COD_CONTRATO" />
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDENCIAL">
+            <EntityTypeMapping TypeName="ProyectoModelo.CREDENCIAL">
+              <MappingFragment StoreEntitySet="CREDENCIAL">
+                <ScalarProperty Name="ID_CREDENCIAL" ColumnName="ID_CREDENCIAL" />
+                <ScalarProperty Name="USER_CRED" ColumnName="USER_CRED" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_EST_CREDEN" ColumnName="ID_EST_CREDEN" />
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_FACTURA">
+            <EntityTypeMapping TypeName="ProyectoModelo.DETALLE_FACTURA">
+              <MappingFragment StoreEntitySet="DETALLE_FACTURA">
+                <ScalarProperty Name="ID_DET_FACTURA" ColumnName="ID_DET_FACTURA" />
+                <ScalarProperty Name="NOMBRE_SERVICIO" ColumnName="NOMBRE_SERVICIO" />
+                <ScalarProperty Name="COSTO_ASOCIADO" ColumnName="COSTO_ASOCIADO" />
+                <ScalarProperty Name="NUM_FACTURA" ColumnName="NUM_FACTURA" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_ACTIVIDAD">
+            <EntityTypeMapping TypeName="ProyectoModelo.ESTADO_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ESTADO_ACTIVIDAD">
+                <ScalarProperty Name="ID_EST_ACT" ColumnName="ID_EST_ACT" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_CHECK">
+            <EntityTypeMapping TypeName="ProyectoModelo.ESTADO_CHECK">
+              <MappingFragment StoreEntitySet="ESTADO_CHECK">
+                <ScalarProperty Name="ID_EST_CHECK" ColumnName="ID_EST_CHECK" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_CLIENTE">
+            <EntityTypeMapping TypeName="ProyectoModelo.ESTADO_CLIENTE">
+              <MappingFragment StoreEntitySet="ESTADO_CLIENTE">
+                <ScalarProperty Name="ID_EST_CLIENT" ColumnName="ID_EST_CLIENT" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_CREDENCIAL">
+            <EntityTypeMapping TypeName="ProyectoModelo.ESTADO_CREDENCIAL">
+              <MappingFragment StoreEntitySet="ESTADO_CREDENCIAL">
+                <ScalarProperty Name="ID_EST_CREDEN" ColumnName="ID_EST_CREDEN" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_FACTURA">
+            <EntityTypeMapping TypeName="ProyectoModelo.ESTADO_FACTURA">
+              <MappingFragment StoreEntitySet="ESTADO_FACTURA">
+                <ScalarProperty Name="ID_EST_FACT" ColumnName="ID_EST_FACT" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA">
+            <EntityTypeMapping TypeName="ProyectoModelo.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="NUM_FACTURA" ColumnName="NUM_FACTURA" />
+                <ScalarProperty Name="MONTO_BASE" ColumnName="MONTO_BASE" />
+                <ScalarProperty Name="FECH_EMISION" ColumnName="FECH_EMISION" />
+                <ScalarProperty Name="FECH_VENC" ColumnName="FECH_VENC" />
+                <ScalarProperty Name="MONTO_EXTRA" ColumnName="MONTO_EXTRA" />
+                <ScalarProperty Name="MONTO_MORA" ColumnName="MONTO_MORA" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+                <ScalarProperty Name="COD_CONTRATO" ColumnName="COD_CONTRATO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_EST_FACT" ColumnName="ID_EST_FACT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GENERO">
+            <EntityTypeMapping TypeName="ProyectoModelo.GENERO">
+              <MappingFragment StoreEntitySet="GENERO">
+                <ScalarProperty Name="ID_GENERO" ColumnName="ID_GENERO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INTERACCION">
+            <EntityTypeMapping TypeName="ProyectoModelo.INTERACCION">
+              <MappingFragment StoreEntitySet="INTERACCION">
+                <ScalarProperty Name="ID_INTERACCION" ColumnName="ID_INTERACCION" />
+                <ScalarProperty Name="FEC_INTERACCION" ColumnName="FEC_INTERACCION" />
+                <ScalarProperty Name="HORA" ColumnName="HORA" />
+                <ScalarProperty Name="MINUTO" ColumnName="MINUTO" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="ID_TIP_INTER" ColumnName="ID_TIP_INTER" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGIN_FAIL">
+            <EntityTypeMapping TypeName="ProyectoModelo.LOGIN_FAIL">
+              <MappingFragment StoreEntitySet="LOGIN_FAIL">
+                <ScalarProperty Name="ID_FAIL" ColumnName="ID_FAIL" />
+                <ScalarProperty Name="USER_FAIL" ColumnName="USER_FAIL" />
+                <ScalarProperty Name="PASS_FAIL" ColumnName="PASS_FAIL" />
+                <ScalarProperty Name="FECHA_INTENTO" ColumnName="FECHA_INTENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAL">
+            <EntityTypeMapping TypeName="ProyectoModelo.MATERIAL">
+              <MappingFragment StoreEntitySet="MATERIAL">
+                <ScalarProperty Name="COD_MATERIAL" ColumnName="COD_MATERIAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CANT_DISPONIBLE" ColumnName="CANT_DISPONIBLE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAIS">
+            <EntityTypeMapping TypeName="ProyectoModelo.PAIS">
+              <MappingFragment StoreEntitySet="PAIS">
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAN">
+            <EntityTypeMapping TypeName="ProyectoModelo.PLAN">
+              <MappingFragment StoreEntitySet="PLAN">
+                <ScalarProperty Name="ID_PLAN" ColumnName="ID_PLAN" />
+                <ScalarProperty Name="NOMBRE_PLAN" ColumnName="NOMBRE_PLAN" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="FEC_INI_VIGENCIA" ColumnName="FEC_INI_VIGENCIA" />
+                <ScalarProperty Name="FEC_FIN_VIGENCIA" ColumnName="FEC_FIN_VIGENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESIONAL">
+            <EntityTypeMapping TypeName="ProyectoModelo.PROFESIONAL">
+              <MappingFragment StoreEntitySet="PROFESIONAL">
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="RUT_PROFESIONAL" ColumnName="RUT_PROFESIONAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="AP_PAT" ColumnName="AP_PAT" />
+                <ScalarProperty Name="AP_MAT" ColumnName="AP_MAT" />
+                <ScalarProperty Name="FEC_NACIMIENTO" ColumnName="FEC_NACIMIENTO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="ID_GENERO" ColumnName="ID_GENERO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGION">
+            <EntityTypeMapping TypeName="ProyectoModelo.REGION">
+              <MappingFragment StoreEntitySet="REGION">
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO_ERROR">
+            <EntityTypeMapping TypeName="ProyectoModelo.REGISTRO_ERROR">
+              <MappingFragment StoreEntitySet="REGISTRO_ERROR">
+                <ScalarProperty Name="ID_ERROR" ColumnName="ID_ERROR" />
+                <ScalarProperty Name="PROCEDIMIENTO" ColumnName="PROCEDIMIENTO" />
+                <ScalarProperty Name="COD_ERROR_DB" ColumnName="COD_ERROR_DB" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REP_CLI_EMP">
+            <EntityTypeMapping TypeName="ProyectoModelo.REP_CLI_EMP">
+              <MappingFragment StoreEntitySet="REP_CLI_EMP">
+                <ScalarProperty Name="ID_REP_CLIEMP" ColumnName="ID_REP_CLIEMP" />
+                <ScalarProperty Name="NUM_VISITAS" ColumnName="NUM_VISITAS" />
+                <ScalarProperty Name="NUM_CAP" ColumnName="NUM_CAP" />
+                <ScalarProperty Name="NUM_ASESORIA" ColumnName="NUM_ASESORIA" />
+                <ScalarProperty Name="NUM_LLAMADA" ColumnName="NUM_LLAMADA" />
+                <ScalarProperty Name="CANT_NVA_IMPLEMEN" ColumnName="CANT_NVA_IMPLEMEN" />
+                <ScalarProperty Name="N_ACC_PRE_CAP" ColumnName="N_ACC_PRE_CAP" />
+                <ScalarProperty Name="N_ACC_POST_CAP" ColumnName="N_ACC_POST_CAP" />
+                <ScalarProperty Name="N_MULTA" ColumnName="N_MULTA" />
+                <ScalarProperty Name="N_DEMANDA" ColumnName="N_DEMANDA" />
+                <ScalarProperty Name="N_DIA_PERDIDO" ColumnName="N_DIA_PERDIDO" />
+                <ScalarProperty Name="MONTO_COTIZACION" ColumnName="MONTO_COTIZACION" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REP_PROFESIONAL">
+            <EntityTypeMapping TypeName="ProyectoModelo.REP_PROFESIONAL">
+              <MappingFragment StoreEntitySet="REP_PROFESIONAL">
+                <ScalarProperty Name="ID_REP_PRO" ColumnName="ID_REP_PRO" />
+                <ScalarProperty Name="CANT_CAP_PRO" ColumnName="CANT_CAP_PRO" />
+                <ScalarProperty Name="NUM_ACC_POST_CAP" ColumnName="NUM_ACC_POST_CAP" />
+                <ScalarProperty Name="NUM_ACT_ATRASADA" ColumnName="NUM_ACT_ATRASADA" />
+                <ScalarProperty Name="NUM_ACT_CANCEL" ColumnName="NUM_ACT_CANCEL" />
+                <ScalarProperty Name="NUM_ACT_TERMIN" ColumnName="NUM_ACT_TERMIN" />
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="ProyectoModelo.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUBRO">
+            <EntityTypeMapping TypeName="ProyectoModelo.RUBRO">
+              <MappingFragment StoreEntitySet="RUBRO">
+                <ScalarProperty Name="COD_RUBRO" ColumnName="COD_RUBRO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIO">
+            <EntityTypeMapping TypeName="ProyectoModelo.SERVICIO">
+              <MappingFragment StoreEntitySet="SERVICIO">
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="REGLA" ColumnName="REGLA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_INTERACCION">
+            <EntityTypeMapping TypeName="ProyectoModelo.TIPO_INTERACCION">
+              <MappingFragment StoreEntitySet="TIPO_INTERACCION">
+                <ScalarProperty Name="ID_TIP_INTER" ColumnName="ID_TIP_INTER" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAN_SERVICIO">
+            <EntityTypeMapping TypeName="ProyectoModelo.PLAN_SERVICIO">
+              <MappingFragment StoreEntitySet="PLAN_SERVICIO">
+                <ScalarProperty Name="ID_PLAN" ColumnName="ID_PLAN" />
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CLIENTE_RUBRO" TypeName="ProyectoModelo.CLIENTE_RUBRO" StoreEntitySet="CLIENTE_RUBRO">
+            <EndProperty Name="CLIENTE_EMPRESA">
+              <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+            </EndProperty>
+            <EndProperty Name="RUBRO">
+              <ScalarProperty Name="COD_RUBRO" ColumnName="COD_RUBRO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MAT_ACTIV" TypeName="ProyectoModelo.MAT_ACTIV" StoreEntitySet="MAT_ACTIV">
+            <EndProperty Name="ACTIVIDAD">
+              <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+            </EndProperty>
+            <EndProperty Name="MATERIAL">
+              <ScalarProperty Name="COD_MATERIAL" ColumnName="COD_MATERIAL" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="FN_MOSTRAR_PROFESIONALES" FunctionName="ProyectoModelo.Store.FN_MOSTRAR_PROFESIONALES" />
+          <FunctionImportMapping FunctionImportName="SP_AUTENTICAR_USUARIO" FunctionName="ProyectoModelo.Store.SP_AUTENTICAR_USUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_BLOQUEAR_USUARIO" FunctionName="ProyectoModelo.Store.SP_BLOQUEAR_USUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTANTOTEST" FunctionName="ProyectoModelo.Store.SP_INSERTANTOTEST" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_PROFESIONAL" FunctionName="ProyectoModelo.Store.SP_INSERT_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_TEST" FunctionName="ProyectoModelo.Store.SP_TEST" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

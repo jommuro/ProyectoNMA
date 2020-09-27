@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cde2c8e3f07b456594a4587ce749c502" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="ProyectoModelo.ACT_TRAB" Width="1.5" PointX="12.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ACTIVIDAD" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ASISTENTE" Width="1.5" PointX="7.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CHECKLIST" Width="1.5" PointX="15.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CLIENTE_EMPRESA" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.COMUNA" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CONTRATO" Width="1.5" PointX="12.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CONTRATO_PLAN" Width="1.5" PointX="15" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CONTRATO_SERVICIO" Width="1.5" PointX="15" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.CREDENCIAL" Width="1.5" PointX="15.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.DETALLE_FACTURA" Width="1.5" PointX="20.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ESTADO_ACTIVIDAD" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ESTADO_CHECK" Width="1.5" PointX="13.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ESTADO_CLIENTE" Width="1.5" PointX="8.25" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ESTADO_CREDENCIAL" Width="1.5" PointX="13.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ESTADO_FACTURA" Width="1.5" PointX="15.75" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.FACTURA" Width="1.5" PointX="18" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.GENERO" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.INTERACCION" Width="1.5" PointX="18" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.LOGIN_FAIL" Width="1.5" PointX="6.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.MATERIAL" Width="1.5" PointX="15" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.PAIS" Width="1.5" PointX="0.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.PLAN" Width="1.5" PointX="12.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.PROFESIONAL" Width="1.5" PointX="7.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.REGION" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.REGISTRO_ERROR" Width="1.5" PointX="8.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.REP_CLI_EMP" Width="1.5" PointX="12.75" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.REP_PROFESIONAL" Width="1.5" PointX="9.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.ROL" Width="1.5" PointX="13.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.RUBRO" Width="1.5" PointX="12.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.SERVICIO" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.TIPO_INTERACCION" Width="1.5" PointX="15.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModelo.PLAN_SERVICIO" Width="1.5" PointX="21" PointY="25" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoModelo.ACT_TRAB_ACTIVIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACT_TRAB_ASISTENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACTIVIDAD_CHECKLIST_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACTIVIDAD_CLIENTE_EMPRESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACTIVIDAD_ESTADO_ACTIVIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACTIVIDAD_PROFESIONAL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ACTIVIDAD_SERVICIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.DET_FACT_ACTIV_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.INTER_ACT_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ASISTENTE_CLIENTE_EMPRESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ASISTENTE_COMUNA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.ASISTENTE_GENERO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CHECK_CLIE_EMPR_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CHECK_EST_CHECK_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CLI_EMP_EST_CLI_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CLIENTE_EMPRESA_COMUNA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CONTRATO_CLIENTE_EMPRESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CRED_CLI_EMP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.FACTURA_CLIENTE_EMPRESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.REP_CLI_EMP_CLI_EMP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.COMUNA_REGION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.PROFESIONAL_COMUNA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CONTRATO_PLAN_CONTRATO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CONTRATO_SERVICIO_CONTRATO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.FACTURA_CONTRATO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CONTRATO_PLAN_PLAN_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CONTRATO_SERVICIO_SERVICIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CRED_EST_CRED_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CREDENCIAL_PROFESIONAL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CREDENCIAL_ROL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.DET_FACT_FACT_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.FACTURA_ESTADO_FACTURA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.PROFESIONAL_GENERO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.INTER_TIP_INTER_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.REGION_PAIS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.PLAN_SERVICIO_PLAN_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.REP_PRO_PRO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.PLAN_SERVICIO_SERVICIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.CLIENTE_RUBRO" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModelo.MAT_ACTIV" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

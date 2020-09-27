@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IconProject Version="2.0" Name="Minus" PUAEnable="true" BasicLatinEnable="false">
+  <Icon Name="Minus" HasCharacterMap="false" Data="M0,0L32,0 32,5.3 0,5.3z" Location="Mobile Application" IsDirty="false" FontName="Minus" IsDuplicate="false" ASCIIValue="" AlphaNumericValue="" FiValue="" GroupName="Mobile Application" DataFont="M2.5,419.7L1002.5,419.7 1002.5,585.3 2.5,585.3 2.5,419.7z" ExportCommand="MetroGraphicsPackage.IconCommand">
+    <Settings MainWidth="48" MainHeight="48" FlipX="1" FlipY="1" CustomSize="48" IconShape="Square" BackgroundBrush="#FFC0C0C0" ContentWidth="26" ContentHeight="26" Angle="0" IsRect="false" SizeIndex="4" CustomWidth="48" CustomHeight="48" IsLinked="false" Padding="11" MaximumPadding="15" SldierValueChanged="MetroGraphicsPackage.IconCommand" IconBrush="#FFFFFFFF" FontFamily="Webdings" Character="&gt;" FlipCommand="MetroGraphicsPackage.IconCommand" IsBackgroundVisible="true" />
+  </Icon>
+  <PreferenceInfo ClassPrefix="sf-icon-" ClassPostfix="" CSSSelector="Attribute" CSSClassName="sf-icon" />
+</IconProject>
